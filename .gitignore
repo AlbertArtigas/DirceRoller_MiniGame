@@ -1,0 +1,15 @@
+*.log
+.vscode/
+.utmp/
+Packages/
+library/
+Assets/Blenders/
+Assets/DowloadedPackages/
+Assets/Settings/
+
+
+UserSettings/
+Temp/
+
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor/
