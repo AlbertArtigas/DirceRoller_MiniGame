@@ -1,15 +1,17 @@
 *.log
+*.csproj
+*.sln
+
+
 .vscode/
 .utmp/
+
 Packages/
-library/
+Library/
+UserSettings/
+Temp/
 
 Assets/DowloadedPackages/
 Assets/Settings/
 
 
-UserSettings/
-Temp/
-
-Assembly-CSharp.csproj
-Assembly-CSharp-Editor/
