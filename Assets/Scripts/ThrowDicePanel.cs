@@ -9,6 +9,9 @@ public class ThrowDicePanel : MonoBehaviour, IDropHandler
             REFS.DICE_HOLDER_GHOST.gameObject.SetActive(false);
             Destroy(eventData.pointerDrag.gameObject);
             REFS.THROW_DIE_SCRIPT.ThrowDice(1, true); 
+
+            REFS.DICE_THROW_BUTTON.interactable = true;
+            REFS.DICE_THROW_BUTTON.blocksRaycasts = true;
         }              
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class REFS : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class REFS : MonoBehaviour
    public static Transform DICE_HOLDER_GHOST;
    public Transform dice_holder_ghost;
 
+   public static CanvasGroup DICE_THROW_BUTTON;
+   public CanvasGroup dice_throw_button;
+
     void Awake()
     {
         if(instance == null)
@@ -34,6 +38,7 @@ public class REFS : MonoBehaviour
         THROW_DIE_SCRIPT = throw_die_script;
         DICE_HOLDER_GHOST = dice_holder_ghost;
         UI_MANAGER = ui_manager;
+        DICE_THROW_BUTTON = dice_throw_button;
 
     }
 

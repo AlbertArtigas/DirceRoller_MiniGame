@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
 
     public Transform dicePanel;
-    [Header("Dice Images")]
+    [Header("Dice Images")]    
     public GameObject Icon1;
     public GameObject Icon2; 
     public GameObject Icon3;
@@ -27,18 +27,6 @@ public class UIManager : MonoBehaviour
         throwDieScript.numberOfDice = 1;
         nDiceInput.text = "1";
         nDiceInput.characterValidation = TMP_InputField.CharacterValidation.Integer;
-
-        SwipeManager.instance.swipePerformed += direction => 
-        {
-            if(direction.x > 0) Debug.Log("Swiped Right");
-                
-            else if(direction.x < 0) Debug.Log("Swiped Left");
-
-            if(direction.y > 0) Debug.Log("Swiped Up");
-            
-            else if(direction.y < 0) Debug.Log("Swiped Down");
-                
-        };
 
     }   
     

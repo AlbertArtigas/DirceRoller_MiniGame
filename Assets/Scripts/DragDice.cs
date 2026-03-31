@@ -30,6 +30,8 @@ public class DragDice : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         int sibIndex = rectTransform.GetSiblingIndex();
+        REFS.DICE_THROW_BUTTON.interactable = false;
+        REFS.DICE_THROW_BUTTON.blocksRaycasts = false;
 
         rectTransform.SetParent(canvas.transform);
         rectTransform.localScale *= 1.2f;
@@ -60,6 +62,8 @@ public class DragDice : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         rectTransform.localScale /= 1.2f;
         canvasGroup.blocksRaycasts = true;
+        REFS.DICE_THROW_BUTTON.interactable = true;
+        REFS.DICE_THROW_BUTTON.blocksRaycasts = true;
     }
 
 }
