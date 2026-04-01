@@ -10,6 +10,7 @@ public class ThrowDicePanel : MonoBehaviour, IDropHandler
             Destroy(eventData.pointerDrag.gameObject);
             REFS.THROW_DIE_SCRIPT.ThrowDice(1, true); 
 
+            REFS.SWIPE_MANAGER.isDragging = false;
             REFS.DICE_THROW_BUTTON.interactable = true;
             REFS.DICE_THROW_BUTTON.blocksRaycasts = true;
         }              

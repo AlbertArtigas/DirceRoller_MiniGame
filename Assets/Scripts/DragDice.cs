@@ -6,12 +6,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class DragDice : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragDice : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler
 {
     Canvas canvas;
     RectTransform diceHolderPanel;
     HorizontalLayoutGroup horizontalLayoutGroup;
     GameObject diceIconGhost;
+
+    public int value;
+
+    bool dragged;
+
     [SerializeField]private int siblingIndex;
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private CanvasGroup canvasGroup;
@@ -25,11 +30,14 @@ public class DragDice : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+        dragged = false;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        dragged = true;
         int sibIndex = rectTransform.GetSiblingIndex();
+        
+        REFS.SWIPE_MANAGER.isDragging = true;
         REFS.DICE_THROW_BUTTON.interactable = false;
         REFS.DICE_THROW_BUTTON.blocksRaycasts = false;
 
@@ -61,9 +69,18 @@ public class DragDice : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         rectTransform.localScale /= 1.2f;
-        canvasGroup.blocksRaycasts = true;
+        REFS.SWIPE_MANAGER.isDragging = false;
         REFS.DICE_THROW_BUTTON.interactable = true;
         REFS.DICE_THROW_BUTTON.blocksRaycasts = true;
     }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if(!dragged)
+        {
+            REFS.THROW_DIE_SCRIPT.ThrowDice(1, true);
+            Destroy(gameObject);            
+        }   
+    } 
 
 }

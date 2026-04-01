@@ -12,6 +12,7 @@ public class DiceSlot : MonoBehaviour, IDropHandler
         if(eventData.pointerDrag != null)
              eventData.pointerDrag.GetComponent<RectTransform>().SetParent(transform);
              eventData.pointerDrag.GetComponent<RectTransform>().SetSiblingIndex(sibIndex);
+             eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
              
     }
 }

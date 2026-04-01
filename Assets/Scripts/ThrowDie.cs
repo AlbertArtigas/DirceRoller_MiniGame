@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ThrowDie : MonoBehaviour
 {
     public GameObject die;
     public UIManager UIManager;
+    public SwipeManager SwipeManager;
     public int numberOfDice;    
 
     public Dictionary<GameObject, int> diceResults = new Dictionary<GameObject, int>();
@@ -22,7 +24,7 @@ public class ThrowDie : MonoBehaviour
     }
     IEnumerator Throw(int numberOfDice, bool inHand)
     {
-        if(!inHand && GameManager.DiceLeft <= 0) yield break;
+        if(!inHand && GameManager.DiceLeft <= 0) yield break; //|| SwipeManager.hasSwiped) yield break;
 
         for(int i = 0; i < numberOfDice; i++)
         {
@@ -38,6 +40,18 @@ public class ThrowDie : MonoBehaviour
             
             yield return new WaitForSeconds(t);   
         }
+    }
+
+    public void ThrowAllHandDie()
+    {
+        int nDice = 0;
+        for (int i = 0; i < UIManager.dicePanel.childCount; i++)
+        {
+            if(UIManager.dicePanel.GetChild(i).name == "DiceIconGhost") continue;
+            nDice ++;
+            Destroy(UIManager.dicePanel.GetChild(i).gameObject);                                   
+        }
+        ThrowDice(nDice, true);
     }
     public void ClearDice()
     {

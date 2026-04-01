@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI diceLeftText;
+    public TextMeshProUGUI scoreText;
+    public GameObject gameOverPanel;
+    public TextMeshProUGUI GOScoreText;
+    public TextMeshProUGUI GOTotalMissions;
 
     public TMP_InputField nDiceInput;
     public ThrowDie throwDieScript;
@@ -29,7 +31,6 @@ public class UIManager : MonoBehaviour
         nDiceInput.characterValidation = TMP_InputField.CharacterValidation.Integer;
 
     }   
-    
     public void DiceUp()
     {
         throwDieScript.numberOfDice++;
@@ -50,7 +51,6 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(FillDicePanelCoroutine());
     }
-
     IEnumerator FillDicePanelCoroutine()
     {   
         int diceCount = throwDieScript.diceResults.Count;
@@ -61,7 +61,6 @@ public class UIManager : MonoBehaviour
             int currentDieValue = throwDieScript.diceResults[currentDie];
 
             if(currentDieValue == 0)  continue;
-            
 
             GameObject diceIcon = null;
             switch (currentDieValue)
@@ -85,14 +84,14 @@ public class UIManager : MonoBehaviour
                     diceIcon = Icon6;
                     break;                
             }
-            Instantiate(diceIcon, dicePanel);
+            GameObject icon = Instantiate(diceIcon, dicePanel);
+            icon.GetComponent<DragDice>().value = currentDieValue;
             Destroy(currentDie);
             throwDieScript.diceResults.Remove(currentDie);
             yield return new WaitForSeconds(.05f);
         }
     
     }
-
     public void ClearDicePanel()
     {
         for (int i = dicePanel.childCount - 1; i >= 0 ; i--)
@@ -101,10 +100,27 @@ public class UIManager : MonoBehaviour
             Destroy(dicePanel.GetChild(i).gameObject);            
         }
     }
-    
-
     public void UpdateDiceLeft()
     {
         diceLeftText.text = GameManager.DiceLeft.ToString();    
     }
+    internal void UpdateScore()
+    {
+        scoreText.text = GameManager.TotalScore.ToString();
+    }
+
+    public void GameOverScreen()
+    {
+        gameOverPanel.SetActive(true);
+        GOScoreText.text = GameManager.TotalScore.ToString();
+        GOTotalMissions.text = "1"; //TODO: Count Missions and display here.
+    }
+    public void Retry()
+    {
+        gameOverPanel.SetActive(false);
+    }
+
+    
+
+
 }

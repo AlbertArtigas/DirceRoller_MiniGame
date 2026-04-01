@@ -10,6 +10,12 @@ public class REFS : MonoBehaviour
    public static UIManager UI_MANAGER;
    public UIManager ui_manager;
 
+   public static SwipeManager SWIPE_MANAGER;
+    public SwipeManager swipe_manager;
+
+    public static MissionManager MISSION_MANAGER;
+    public MissionManager mission_manager;
+
    public static Canvas MAIN_CANVAS;
    public Canvas main_canvas;
    public static Transform DICE_PANEL;
@@ -39,6 +45,8 @@ public class REFS : MonoBehaviour
         DICE_HOLDER_GHOST = dice_holder_ghost;
         UI_MANAGER = ui_manager;
         DICE_THROW_BUTTON = dice_throw_button;
+        SWIPE_MANAGER = swipe_manager;
+        MISSION_MANAGER = mission_manager;
 
     }
 

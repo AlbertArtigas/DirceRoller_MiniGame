@@ -89,9 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9de3d1a1e510f4d93f1e13dfcf3482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  diceHolderPanel: {fileID: 0}
-  diceIconGhost: {fileID: 0}
+  value: 5
   siblingIndex: 0
   rectTransform: {fileID: 2143813822455141694}
   canvasGroup: {fileID: 1134323194253082853}

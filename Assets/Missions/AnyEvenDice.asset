@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc0580a84ca7b3499017184016179cb, type: 3}
+  m_Name: AnyEvenDice
+  m_EditorClassIdentifier: 
+  missionName: AnyEvenDice
+  missionText: 'Place any even Dice '
+  diceAmount: 3
+  allowedDice:
+  - {fileID: 5847936239030779674, guid: f3717d1972a2fd44cb6d3d418bf6ef58, type: 3}
+  - {fileID: 3340771659552331033, guid: d799fd547d451194c814058041c10e0b, type: 3}
+  - {fileID: 2103907498860729994, guid: d9a4abe5c5dd5854a9349ca8dcb81f74, type: 3}
+  time: 40
+  points: 10
